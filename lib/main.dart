@@ -53,23 +53,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ];
   String? _selectedCourse;
 
-  // Radio - Gender
+  
   String? _selectedGender;
 
-  // Checkbox - Terms and Conditions
+  
   bool _agreedToTerms = false;
 
-  // Slider - Age
+  
   double _age = 18;
 
-  // DatePicker - Birthdate
+  
   DateTime? _selectedBirthdate;
 
-  // Gesture Detector state (Sign-Up button box)
+
   Color _boxColor = Colors.grey.shade300;
   String _gestureMessage = 'Tap, double tap, or long-press Sign Up';
 
-  // ----- Validators -----
+
   String? _validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Full name cannot be empty';
@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
-  // ----- DatePicker -----
+
   Future<void> _pickBirthdate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -120,12 +120,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         '${_selectedBirthdate!.year}';
   }
 
-  // ----- Gesture handlers -----
   void _onSingleTap() {
     if (!_validateFormBeforeGesture()) return;
     setState(() {
       _boxColor = Colors.green;
-      _gestureMessage = '👆 Single Tap Detected!';
+      _gestureMessage = 'Single Tap Detected!';
     });
   }
 
@@ -133,7 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (!_validateFormBeforeGesture()) return;
     setState(() {
       _boxColor = Colors.orange;
-      _gestureMessage = '👏 Double Tap Detected!';
+      _gestureMessage = 'Double Tap Detected!';
     });
   }
 
@@ -141,12 +140,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (!_validateFormBeforeGesture()) return;
     setState(() {
       _boxColor = Colors.red;
-      _gestureMessage = '✋ Long Press Detected!';
+      _gestureMessage = 'Long Press Detected!';
     });
   }
 
-  // Runs full form validation + checks terms checkbox.
-  // Returns true if valid, shows a SnackBar and returns false otherwise.
+
   bool _validateFormBeforeGesture() {
     final isFormValid = _formKey.currentState?.validate() ?? false;
 
@@ -210,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // Full Name
+            
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(
@@ -221,7 +219,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Email
+            
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -233,7 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Password
+               
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
@@ -245,7 +243,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Dropdown - Course
+               
                 DropdownButtonFormField<String>(
                   value: _selectedCourse,
                   decoration: const InputDecoration(
@@ -268,7 +266,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Radio - Gender
+               
                 const Text(
                   'Gender',
                   style: TextStyle(fontWeight: FontWeight.w600),
@@ -301,7 +299,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 8),
 
-                // Slider - Age
+               
                 Text(
                   'Age: ${_age.round()} years old',
                   style: const TextStyle(fontWeight: FontWeight.w600),
@@ -320,7 +318,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 8),
 
-                // DatePicker - Birthdate
+                
                 const Text(
                   'Birthdate',
                   style: TextStyle(fontWeight: FontWeight.w600),
@@ -349,7 +347,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Checkbox - Terms and Conditions
+                
                 CheckboxListTile(
                   contentPadding: EdgeInsets.zero,
                   controlAffinity: ListTileControlAffinity.leading,
@@ -375,7 +373,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 24),
 
-                // ----- Gesture-detected Sign-Up button -----
+              
                 Center(
                   child: GestureDetector(
                     onTap: _onSingleTap,
