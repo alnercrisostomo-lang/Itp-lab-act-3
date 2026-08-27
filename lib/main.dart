@@ -36,15 +36,12 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  // Form key for validation
   final _formKey = GlobalKey<FormState>();
 
-  // Controllers
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Dropdown - Course
   final List<String> _courses = [
     'BS Information Technology',
     'BS Computer Science',
@@ -53,22 +50,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ];
   String? _selectedCourse;
 
-  
   String? _selectedGender;
 
-  
   bool _agreedToTerms = false;
 
-  
   double _age = 18;
 
-  
   DateTime? _selectedBirthdate;
-
 
   Color _boxColor = Colors.grey.shade300;
   String _gestureMessage = 'Tap, double tap, or long-press Sign Up';
-
 
   String? _validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -97,7 +88,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
     return null;
   }
-
 
   Future<void> _pickBirthdate() async {
     final DateTime? picked = await showDatePicker(
@@ -143,7 +133,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _gestureMessage = 'Long Press Detected!';
     });
   }
-
 
   bool _validateFormBeforeGesture() {
     final isFormValid = _formKey.currentState?.validate() ?? false;
@@ -208,7 +197,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 24),
 
-            
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(
@@ -219,7 +207,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-            
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -231,7 +218,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-               
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
@@ -243,7 +229,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-               
                 DropdownButtonFormField<String>(
                   value: _selectedCourse,
                   decoration: const InputDecoration(
@@ -266,7 +251,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-               
                 const Text(
                   'Gender',
                   style: TextStyle(fontWeight: FontWeight.w600),
@@ -299,7 +283,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 8),
 
-               
                 Text(
                   'Age: ${_age.round()} years old',
                   style: const TextStyle(fontWeight: FontWeight.w600),
@@ -310,6 +293,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   max: 100,
                   divisions: 87,
                   label: '${_age.round()}',
+                  activeColor: Colors.teal,
+                  inactiveColor: Colors.teal.shade100,
+                  thumbColor: Colors.teal.shade700,
                   onChanged: (value) {
                     setState(() {
                       _age = value;
@@ -318,7 +304,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 8),
 
-                
                 const Text(
                   'Birthdate',
                   style: TextStyle(fontWeight: FontWeight.w600),
@@ -347,7 +332,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                
                 CheckboxListTile(
                   contentPadding: EdgeInsets.zero,
                   controlAffinity: ListTileControlAffinity.leading,
@@ -373,7 +357,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 24),
 
-              
                 Center(
                   child: GestureDetector(
                     onTap: _onSingleTap,
